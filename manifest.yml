@@ -1,0 +1,17 @@
+applications:
+- name: pgadmin-web
+  memory: 1G
+  disk_quota: 1G
+  health-check-type: process
+
+  docker:
+    image: hasanciftci26/pgadmin-cf:1.0
+
+  routes:
+    - route: pgadmin-dev.cfapps.us10-001.hana.ondemand.com # Change the domain based on the Cloud Foundry environment where the app will be deployed
+
+  env:
+    PGADMIN_DEFAULT_EMAIL: admin@admin.com
+    PGADMIN_DEFAULT_PASSWORD: admin
+    PGADMIN_LISTEN_PORT: 8080
+    PGADMIN_DISABLE_POSTFIX: true
